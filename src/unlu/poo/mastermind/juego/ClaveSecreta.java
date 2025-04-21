@@ -1,7 +1,5 @@
 package unlu.poo.mastermind.juego;
 
-import unlu.poo.mastermind.juego.FichaResultado;
-
 public class ClaveSecreta extends Clave {
     public ClaveSecreta() {
         super();
@@ -26,10 +24,10 @@ public class ClaveSecreta extends Clave {
                 FichaResultado.MALA};
 
         // Obtener las buenas
-        for (int i = 0; i < 5; i++) {
+        for (int i = 1; i <= 5; i++) {
             try {
                 if (this.getColor(i) == claveAProbar.getColor(i)) {
-                    respuesta[i-4] = FichaResultado.BUENA;
+                    respuesta[i-1] = FichaResultado.BUENA;
                     frecuencias[this.getColor(i).ordinal()]--;
                 }
             } catch (Exception e) {
@@ -38,11 +36,11 @@ public class ClaveSecreta extends Clave {
         }
 
         // Obtener regulares
-        for (int i = 0; i < 5; i++) {
+        for (int i = 1; i <= 5; i++) {
             if(respuesta[i-1].equals(FichaResultado.MALA)){
                 try {
                     if (frecuencias[claveAProbar.getColor(i).ordinal()] > 0) {
-                        respuesta[i-4] = FichaResultado.REGULAR;
+                        respuesta[i-1] = FichaResultado.REGULAR;
                         frecuencias[this.getColor(i).ordinal()]--;
                     }
                 } catch (Exception e) {
